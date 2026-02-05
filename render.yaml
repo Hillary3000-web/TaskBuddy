@@ -7,7 +7,7 @@ databases:
 services:
   - type: web
     name: taskbuddy-backend
-    env: python
+    runtime: python
     region: oregon
     plan: free
     rootDir: taskbuddy
@@ -29,8 +29,7 @@ services:
 
   - type: web
     name: taskbuddy-frontend
-    env: static
-    plan: free
+    runtime: static
     rootDir: frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
