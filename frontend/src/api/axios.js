@@ -16,14 +16,27 @@ import axios from 'axios';
 
 /**
  * Base URL for all API requests.
- * Should match the Django backend server address.
+ * Uses environment variable for flexibility, with production fallback.
  * @constant {string}
  */
-let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-// If VITE_API_URL comes from Render's "host" property, it won't have a protocol
-if (baseUrl && !baseUrl.startsWith('http')) {
-    baseUrl = `https://${baseUrl}`;
+const PRODUCTION_BACKEND_URL = 'https://taskbuddy-backend-1i2m.onrender.com';
+const LOCAL_BACKEND_URL = 'http://localhost:8000';
+
+// Determine if we're in development or production
+const isDevelopment = import.meta.env.DEV;
+
+// Use localhost for development, production URL for deployed builds
+let baseUrl = isDevelopment ? LOCAL_BACKEND_URL : PRODUCTION_BACKEND_URL;
+
+// Allow override via environment variable if explicitly set
+if (import.meta.env.VITE_API_URL) {
+    baseUrl = import.meta.env.VITE_API_URL;
+    // If VITE_API_URL comes from Render's "host" property, it won't have a protocol
+    if (!baseUrl.startsWith('http')) {
+        baseUrl = `https://${baseUrl}`;
+    }
 }
+
 const API_URL = `${baseUrl}/api`;
 
 /**
