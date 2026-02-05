@@ -30,7 +30,6 @@ services:
   - type: web
     name: taskbuddy-frontend
     env: static
-    region: oregon
     plan: free
     rootDir: frontend
     buildCommand: "npm install && npm run build"
@@ -40,4 +39,4 @@ services:
         fromService:
           type: web
           name: taskbuddy-backend
-          property: url
+          property: host

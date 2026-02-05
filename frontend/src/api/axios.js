@@ -19,7 +19,12 @@ import axios from 'axios';
  * Should match the Django backend server address.
  * @constant {string}
  */
-const API_URL = 'http://localhost:8000/api';
+let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// If VITE_API_URL comes from Render's "host" property, it won't have a protocol
+if (baseUrl && !baseUrl.startsWith('http')) {
+    baseUrl = `https://${baseUrl}`;
+}
+const API_URL = `${baseUrl}/api`;
 
 /**
  * Pre-configured Axios instance for API requests.
