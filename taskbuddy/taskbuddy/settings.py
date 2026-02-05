@@ -82,6 +82,29 @@ if os.environ.get('CLIENT_ORIGIN'):
 
 CORS_ALLOW_CREDENTIALS = True
 
+# Allow all standard HTTP methods
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# Allow common headers including Authorization for JWT
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 ROOT_URLCONF = 'taskbuddy.urls'
 
 TEMPLATES = [
