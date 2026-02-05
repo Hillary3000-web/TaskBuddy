@@ -11,7 +11,7 @@ services:
     region: oregon
     plan: free
     rootDir: taskbuddy
-    buildCommand: "./build.sh"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate"
     startCommand: "gunicorn taskbuddy.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
