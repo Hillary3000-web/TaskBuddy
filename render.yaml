@@ -7,10 +7,10 @@ databases:
 services:
   - type: web
     name: taskbuddy-backend
-    runtime: python
+    env: python
     region: oregon
     plan: free
-    rootDirectory: taskbuddy
+    rootDir: taskbuddy
     buildCommand: "./build.sh"
     startCommand: "gunicorn taskbuddy.wsgi:application"
     envVars:
@@ -29,10 +29,10 @@ services:
 
   - type: web
     name: taskbuddy-frontend
-    runtime: static
+    env: static
     region: oregon
     plan: free
-    rootDirectory: frontend
+    rootDir: frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
     envVars:
