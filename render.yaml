@@ -12,7 +12,7 @@ services:
     plan: free
     rootDir: taskbuddy
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate"
-    startCommand: "gunicorn taskbuddy.wsgi:application"
+    startCommand: "gunicorn taskbuddy.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
