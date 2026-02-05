@@ -62,12 +62,16 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
+    'https://task-buddy-lac.vercel.app',
 ]
 
-if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
-    # In production, allow the frontend URL if we knew it, or allow all for now if dynamic
-    # Ideally, we should set this via env var too
-    CORS_ALLOW_ALL_ORIGINS = True # Simplified for initial deployment
+CSRF_TRUSTED_ORIGINS = [
+    'https://task-buddy-lac.vercel.app',
+]
+
+if os.environ.get('CLIENT_ORIGIN'):
+    CORS_ALLOWED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN'))
+    CSRF_TRUSTED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN'))
 
 CORS_ALLOW_CREDENTIALS = True
 
