@@ -26,6 +26,8 @@ services:
         value: 4
       - key: DJANGO_ALLOWED_HOSTS
         value: ".onrender.com"
+      - key: CLIENT_ORIGIN
+        value: "https://task-buddy-lac.vercel.app"
 
   - type: web
     name: taskbuddy-frontend
