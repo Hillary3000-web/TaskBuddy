@@ -19,7 +19,7 @@ import axios from 'axios';
  * Uses environment variable for flexibility, with production fallback.
  * @constant {string}
  */
-const PRODUCTION_BACKEND_URL = 'https://taskbuddy-backend-1i2m.onrender.com';
+const PRODUCTION_BACKEND_URL = 'https://taskbuddy-backend-i12m.onrender.com';
 const LOCAL_BACKEND_URL = 'http://localhost:8000';
 
 // Determine if we're in development or production
